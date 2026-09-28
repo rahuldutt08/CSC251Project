@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 /**
  * Demo class for the Policy class. Reads a set of policies from
- * PolicyInformation.txt, stores them in an ArrayList, and displays
- * each one by iterating over the list.
+ * PolicyInformation.txt, stores them in an ArrayList, displays each one,
+ * and reports how many policyholders are smokers and non-smokers.
  */
 public class Project_Rahul_Dutt
 {
@@ -36,6 +36,9 @@ public class Project_Rahul_Dutt
 
         inputFile.close();
 
+        int smokerCount = 0;
+        int nonSmokerCount = 0;
+
         for (Policy policy : policies)
         {
             System.out.println("Policy Number: " + policy.getPolicyNumber());
@@ -56,7 +59,21 @@ public class Project_Rahul_Dutt
             System.out.printf("Policy Price: $%.2f%n",
                               policy.getPolicyPrice());
             System.out.println();
+
+            if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
+            {
+                smokerCount++;
+            }
+            else
+            {
+                nonSmokerCount++;
+            }
         }
+
+        System.out.println("The number of policies with a smoker is: "
+                           + smokerCount);
+        System.out.println("The number of policies with a non-smoker is: "
+                           + nonSmokerCount);
     }
 
     /**
